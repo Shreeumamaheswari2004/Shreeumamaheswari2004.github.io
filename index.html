@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+</head>
+<body class="container" style="background-color: #000000;
+color: #ffffff;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;">
+    <h1>TODO APP</h1>
+    <div>
+        <input type="text" id="taskInput" placeholder="Enter your TODO here" />
+        <button onclick="addTask()">Enter</button>
+    </div>
+    <div>
+        <h2>TODO's</h2>
+        <ul id="tasks"></ul>
+    </div>
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById("taskInput");
+            var task = taskInput.value.trim();
+            if (task !== "") {
+                var taskList = document.getElementById("tasks");
+                var li = document.createElement("li");
+                li.textContent = task;
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.onclick = function() {
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                };
+                li.appendChild(deleteButton);
+                taskList.appendChild(li);
+                taskInput.value = "";
+            } else {
+                alert("Please enter a task");
+            }
+        }
+    </script>
+</body>
+</html>
+
